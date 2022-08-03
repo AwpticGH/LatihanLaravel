@@ -17,11 +17,11 @@ class KontakSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('model_kontaks')->insert([
-            'Nama' => Str::random(10),
+        DB::table('kontak')->insert([
+            'Name' => Str::random(10),
             'Email' => Str::random(10).'@gmail.com',
-            'Phone Number' => Str::random(12),
-            'Addres' => Str::random(100)
+            'PhoneNumber' => Str::random(12),
+            'Address' => Str::random(100)
         ]);
     }
 }

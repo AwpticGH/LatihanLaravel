@@ -25,7 +25,7 @@ class Kontak extends Controller
      */
     public function create()
     {
-        //
+        return view('kontak_create');
     }
 
     /**
@@ -36,7 +36,13 @@ class Kontak extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new ModelKontak();
+        $data -> Name = $request -> name;
+        $data -> Email = $request -> email;
+        $data -> PhoneNumber = $request -> phoneNumber;
+        $data -> Address = $request -> address;
+        $data -> save();
+        return redirect() -> route('kontak.index') -> with('alert-success', 'Data Berhasil Dibikin');
     }
 
     /**
@@ -58,7 +64,8 @@ class Kontak extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = ModelKontak::where('ID', $id) -> get();
+        return view('kontak_edit', compact('data'));
     }
 
     /**
@@ -70,7 +77,14 @@ class Kontak extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = ModelKontak::where('ID', $id) -> first();
+        $data -> Name = $request -> name;
+        $data -> Email = $request -> email;
+        $data -> PhoneNumber = $request -> phoneNumber;
+        $data -> Address = $request -> address;
+        $data -> save();
+
+        return redirect() -> route('kontak.index') -> with('alert-success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -81,6 +95,8 @@ class Kontak extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ModelKontak::where('ID',$id);
+        $data -> delete();
+        return redirect() -> route('kontak.index')->with('alert-success', 'Data Berhasil Dihapus!');
     }
 }

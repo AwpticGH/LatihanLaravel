@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('kontak', 'Kontak');
+Route::resource('kontak', 'App\Http\Controllers\Kontak');
 Route::get('/', function () {
     return view('index');
 });
