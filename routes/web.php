@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Kontak as Kontak;
+use App\Http\Controllers\Files as Files;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('kontak', 'App\Http\Controllers\Kontak');
+Route::resource('kontak', Kontak::class);
+Route::resource('/file', Files::class);
 Route::get('/', function () {
     return view('index');
 });

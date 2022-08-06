@@ -83,6 +83,7 @@ class Kontak extends Controller
         $data -> PhoneNumber = $request -> phoneNumber;
         $data -> Address = $request -> address;
         $data -> save();
+        dd($data);
 
         return redirect() -> route('kontak.index') -> with('alert-success', 'Data Berhasil Diubah');
     }
